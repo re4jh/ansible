@@ -38,7 +38,8 @@
   roles:
     - home_environment
     - motd
-    - install-bat
+# bat removed since a newer one is installed on ubuntu 20.04 plus new one not downloadable -> failing role
+#    - install-bat
 
 #- name: Configure basic network setup for gw_test.ffbsee.net
 #  hosts: gw_test.ffbsee.net
@@ -101,7 +102,7 @@
 
 
   #- freifunk-icvpn
-   - bird
+  # - bird
   #- tinc
 
 - name: Configure web setup for gw_test.ffbsee.net
