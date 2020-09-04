@@ -1,0 +1,55 @@
+---
+hostname: 'gw_test.ffbsee.net'
+
+ipv4_mesh_address: '10.15.224.7'
+
+ipv6_suffix: ':7'
+ipv6_radv_suffix: ':1'
+ipv6_address: '{{ ipv6_prefix }}{{ ipv6_suffix }}'
+mesh_ipv6_extra_addr: ''
+mesh_ipv6_address: '{{ ipv6_address }}'
+ipv6_radv_address: '{{ ipv6_prefix }}{{ ipv6_radv_suffix }}'
+ipv6_radv_prefix: '{{ ipv6_prefix }}:/64'
+
+wan_ipv6_network: ''
+wan_ipv6_ip: ''
+wan_base_interface: 'enp1s0'
+wan_vlan_id: ''
+wan_interface: '{{ wan_base_interface }}{% if wan_vlan_id != "" %}.{{ wan_vlan_id }}{% endif %}'
+wan_ipv4_ip: '172.23.26.239'
+
+fastd_secret_key: ''
+vpn_on_port_443: 'false'
+
+run_mesh: 'true'
+run_gateway: 'true'
+run_webserver: 'false'
+run_icvpn: 'false'
+run_map: 'false'
+run_stats: 'false'
+da_laueft_ein_dhcp_relay: 'true'
+freifunk_dhcp_server: 'false' 
+freifunk_dhcp_relay: 'true'
+
+
+
+fastd_vpn_backbone_configs:
+  - gw01
+  - gw03
+  - gw04
+  - map
+  - mate
+  
+fastd_peer_limit: ''
+
+ipv6_uplink_announcen: 'false'
+radv_AdvDefaultPreference: 'low'
+
+debian: '10'
+number_of_cores: '4'
+freifunk_karte_api: 'false'
+
+nodelist: 'false'
+
+block_rfc1918_interface: "{{ wan_base_interface }}"
+
