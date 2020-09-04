@@ -12,7 +12,7 @@
     - git
     - build-essential
     - pkg-config
-    - linux-headers-amd64
+    - linux-headers-generic
     - libnl-3-dev
     - libnl-genl-3-dev
     - libjson-c-dev
