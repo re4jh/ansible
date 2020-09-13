@@ -164,6 +164,9 @@
 
 - name: install xperimental/freifunk-exporter
   hosts: gw_test.ffbsee.net
+  environment:
+    # make sure we find go
+    PATH: /opt/go/1.14.4/bin:{{ ansible_env.PATH }}
   tags:
     - freifunk-exporter
     - exporter
@@ -184,7 +187,7 @@
 
           [Service]
           Type=simple
-          ExecStart=freifunk-exporter --cache-interval 30s --source-url https://meta.ffbsee.net/data/meshviewer.json
+          ExecStart={{ freifunk_exporter_path }}/freifunk-exporter --cache-interval 30s --source-url https://meta.ffbsee.net/data/meshviewer.json
 
           [Install]
           WantedBy=multi-user.target
