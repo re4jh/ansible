@@ -95,10 +95,6 @@ prometheus_targets:
     #9273 is telegraf
     #9295 is freifunk exporter
 
-#grafana vars
-grafana_security:
-  admin_user: admin
-#  admin_password: enter_your_secure_password
 grafana_dashboard_dir: /opt/grafana/dashboards
 grafana_datasources:
   - name: prometheus
