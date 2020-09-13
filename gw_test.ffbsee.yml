@@ -145,10 +145,9 @@
         src: "files/grafana_dashboards/{{ item }}"
         dest: "{{ grafana_dashboard_dir }}/{{ item }}"
         mode: '0644'
-        remote_src: yes
-  loop:
-    - freifunk_overview.json
-    - freifunk_router_detail.json
+      loop:
+        - freifunk_overview.json
+        - freifunk_router_detail.json
 
 - name: install golang
   hosts: gw_test.ffbsee.net
@@ -156,7 +155,7 @@
     - golang
     - go
   roles:
-     - role: golang
+    - role: golang
 
 - name: install xperimental/freifunk-exporter
   hosts: gw_test.ffbsee.net

@@ -54,7 +54,7 @@ packages_extra:
 
 #telegraf monitoring of prometheus
 telegraf_agent_output:
-- type: prometheus_client
-  config:
-    - listen = ":9273"
-    #- metric_version = 2
+  - type: prometheus_client
+    config:
+      - listen = ":9273"
+      #- metric_version = 2
