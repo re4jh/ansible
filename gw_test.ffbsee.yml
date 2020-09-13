@@ -140,6 +140,11 @@
           admin_user: admin
           admin_password: dinge
   tasks:
+    - name: create dashboard dir
+      file:
+        path: /opt/grafana/dashboards
+        state: directory
+        mode: '0755'
     - name: install dashboards
       copy:
         src: "files/grafana_dashboards/{{ item }}"
