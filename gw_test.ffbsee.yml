@@ -115,7 +115,7 @@
 #    - FFNodeList
 
 - name: install telegraf
-  hosts: map.ffbsee.net
+  hosts: gw_test.ffbsee.net
   become: yes
   tags:
     - telegraf
@@ -123,14 +123,14 @@
     - telegraf
 
 - name: install prometheus
-  hosts: map.ffbsee.net
+  hosts: gw_test.ffbsee.net
   tags:
     - prometheus
   roles:
     - prometheus
 
 - name: install grafana
-  hosts: map.ffbsee.net
+  hosts: gw_test.ffbsee.net
   tags:
     - grafana
   roles:
@@ -147,12 +147,19 @@
     - freifunk_router_detail.json
 
 - name: install golang
-  hosts: map.ffbsee.net
+  hosts: gw_test.ffbsee.net
+  tags:
+    - golang
+    - go
   roles:
      - role: golang
 
 - name: install xperimental/freifunk-exporter
-  hosts: map.ffbsee.net
+  hosts: gw_test.ffbsee.net
+  tags:
+    - freifunk-exporter
+    - exporter
+    - prometheus-exporter
   tasks:
     - name: clone repository
       git:
