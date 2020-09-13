@@ -53,3 +53,14 @@ nodelist: 'false'
 
 block_rfc1918_interface: "{{ wan_base_interface }}"
 
+
+packages_extra:
+  - git
+  - git-lfs
+
+#telegraf monitoring of prometheus
+telegraf_agent_output:
+- type: prometheus_client
+  config:
+    - listen = ":9273"
+    #- metric_version = 2
