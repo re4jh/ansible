@@ -40,3 +40,6 @@
 [submodule "roles/ansible_version"]
 	path = roles/ansible_version
 	url = https://github.com/chaos-bodensee/role-ansible_version.git
+[submodule "roles/golang"]
+	path = roles/golang
+	url = https://github.com/gantsign/ansible-role-golang.git

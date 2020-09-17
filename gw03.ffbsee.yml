@@ -98,3 +98,9 @@
     - unbound
     - unbound_freifunk_tlds
     - bird
+
+- name: install golang
+  hosts:
+     - gw03.ffbsee.net
+  roles:
+     - role: golang

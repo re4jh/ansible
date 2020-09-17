@@ -112,3 +112,9 @@
     #- gateway-page
 #    - freifunk-karte-json
 #    - FFNodeList
+
+- name: install golang
+  hosts:
+     - gw04.ffbsee.net
+  roles:
+     - role: golang
