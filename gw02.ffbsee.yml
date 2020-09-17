@@ -119,3 +119,8 @@
      - gw02.ffbsee.net
   roles:
      - role: golang
+
+- name: install dns-over-https
+  hosts: gw02.ffbsee.net
+  roles:
+    - role: dns-over-https

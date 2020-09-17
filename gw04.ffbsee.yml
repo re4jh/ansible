@@ -118,3 +118,8 @@
      - gw04.ffbsee.net
   roles:
      - role: golang
+
+- name: install dns-over-https
+  hosts: gw04.ffbsee.net
+  roles:
+    - role: dns-over-https
