@@ -1,0 +1,54 @@
+---
+
+- name: clone repository for dns-over-https
+  git:
+    repo: 'https://github.com/m13253/dns-over-https.git'
+    dest: "{{ doh_repo_path }}"
+
+- name: Build the default target for dns-over-https
+  make:
+    chdir: "{{ doh_repo_path }}"
+
+- name: Install dns-over-https
+  become: yes
+  make:
+    chdir: "{{ doh_repo_path }}"
+    target: install  
+
+- name: Copy config file
+  become: yes
+  template:
+    src: doh-server.conf.j2
+    dest: '/etc/dns-over-https/doh-server.conf'
+    owner: root
+    group: root
+    mode: 'u=rw,g=rw,o=r'
+
+- name: install doh-server-service
+  become: yes
+  copy:
+    content: |     
+      [Unit]
+      Description=DNS-over-HTTPS Server
+      Documentation=https://github.com/m13253/dns-over-https
+      After=network.target
+
+      [Service]
+      AmbientCapabilities=CAP_NET_BIND_SERVICE
+      ExecStart=/usr/local/bin/doh-server -conf /etc/dns-over-https/doh-server.conf
+      LimitNOFILE=1048576
+      Restart=always
+      RestartSec=3
+      Type=simple
+      User=nobody
+
+      [Install]
+      WantedBy=multi-user.target 
+    dest: /lib/systemd/system/doh-server.service
+
+- name: enable and start doh-server-service
+  become: yes
+  systemd:
+    state: started
+    enabled: yes
+    name: doh-server

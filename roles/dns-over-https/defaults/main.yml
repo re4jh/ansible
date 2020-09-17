@@ -1,0 +1,7 @@
+---
+# Directory where the repo clone is placed
+doh_repo_path: '/opt/dns-over-https/'
+
+
+
+
